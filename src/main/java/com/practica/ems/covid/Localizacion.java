@@ -16,14 +16,6 @@ public class Localizacion {
 		super();
 		this.lista = new LinkedList<PosicionPersona>();
 	};
-	
-	public LinkedList<PosicionPersona> getLista() {
-		return lista;
-	}
-
-	public void setLista(LinkedList<PosicionPersona> lista) {
-		this.lista = lista;
-	}
 
 	public void addLocalizacion (PosicionPersona p) throws EmsDuplicateLocationException {
 		try {
@@ -51,9 +43,7 @@ public class Localizacion {
 	public void delLocalizacion(String documento, String fecha, String hora) throws EmsLocalizationNotFoundException {
 	    int pos=-1;
 	    int i;
-	    /**
-	     *  Busca la localización, sino existe lanza una excepción
-	     */
+	    
 	    try {
 			pos = findLocalizacion(documento, fecha, hora);
 		} catch (EmsLocalizationNotFoundException e) {
@@ -96,17 +86,6 @@ public class Localizacion {
 	    }
 		
 		return cadena;		
-	}
-	
-	@SuppressWarnings("unused")
-	private FechaHora parsearFecha (String fecha) {
-		int dia, mes, anio;
-		String[] valores = fecha.split("\\/");
-		dia = Integer.parseInt(valores[0]);
-		mes = Integer.parseInt(valores[1]);
-		anio = Integer.parseInt(valores[2]);
-		FechaHora fechaHora = new FechaHora(dia, mes, anio, 0, 0);
-		return fechaHora;
 	}
 	
 	private  FechaHora parsearFecha (String fecha, String hora) {
