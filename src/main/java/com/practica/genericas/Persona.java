@@ -1,15 +1,33 @@
 package com.practica.genericas;
 
 
+import com.practica.excecption.EmsInvalidNumberOfDataException;
+
 public class Persona {
 	private String nombre, apellidos, documento, email, direccion, cp;
 	FechaHora fechaNacimiento;
+	private static int MAX_DATOS_PERSONA = 8;
+
+	public static Persona parsePersona(String[] datos) throws EmsInvalidNumberOfDataException {
+		if (datos.length != MAX_DATOS_PERSONA) {
+			throw new EmsInvalidNumberOfDataException("Número inválido de campos para PERSONA : " + datos.length);
+		}
+		String nombre = datos[2];
+		String apellidos = datos[3];
+		String documento = datos[1];
+		String email = datos[4];
+		String direccion = datos[5];
+		String cp = datos[6];
+		FechaHora fechaNacimiento = FechaHora.parseFecha(datos[7]);
+
+		return new Persona(nombre, apellidos, documento, email, direccion, cp, fechaNacimiento);
+	}
 
 	public Persona() {
 
 	}
 
-	public Persona(String nombre, String apellidos, String documento, String email, String direccion,
+	public Persona(String nombre, String apellidos, String documento, String email, String direccion, String cp,
 			FechaHora fechaNacimiento) {
 		super();
 		this.nombre = nombre;
@@ -17,6 +35,7 @@ public class Persona {
 		this.documento = documento;
 		this.email = email;
 		this.direccion = direccion;
+		this.cp = cp;
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
