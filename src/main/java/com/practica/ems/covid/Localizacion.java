@@ -16,14 +16,6 @@ public class Localizacion {
 		super();
 		this.lista = new LinkedList<PosicionPersona>();
 	};
-	
-	public LinkedList<PosicionPersona> getLista() {
-		return lista;
-	}
-
-	public void setLista(LinkedList<PosicionPersona> lista) {
-		this.lista = lista;
-	}
 
 	public void addLocalizacion (PosicionPersona p) throws EmsDuplicateLocationException {
 		try {
