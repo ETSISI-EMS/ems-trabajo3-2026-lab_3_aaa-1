@@ -305,7 +305,7 @@ public class ContactosCovid {
 		return fechaHora;
 	}
 
-	private void parsearLinea(String linea) throws EmsInvalidNumberOfDataException, EmsDuplicatePersonException {
+	private void parsearLinea(String linea) throws EmsInvalidNumberOfDataException, EmsDuplicatePersonException, EmsDuplicateLocationException, EmsInvalidTypeException {
 		String datos[] = this.dividirLineaData(linea);
 
 		if (datos[0].equals("PERSONA")) {
@@ -313,7 +313,11 @@ public class ContactosCovid {
 		}
 		else if (datos[0].equals("LOCALIZACION")) {
 			PosicionPersona posicionPersona = PosicionPersona.parsePosicionPersona(datos);
+			this.localizacion.addLocalizacion(posicionPersona);
+			this.listaContactos.insertarNodoTemporal(posicionPersona);
 		}
-
+		else {
+			throw new EmsInvalidTypeException();
+		}
 	}
 }
