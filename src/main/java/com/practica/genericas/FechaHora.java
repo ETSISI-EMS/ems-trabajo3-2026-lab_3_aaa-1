@@ -108,6 +108,18 @@ public class FechaHora implements Comparable<FechaHora>{
 
 	Fecha fecha;
 	Hora hora;
+
+	public static FechaHora parseFecha(String fecha) throws IllegalArgumentException {
+		Fecha date = Fecha.parseFecha(fecha);
+		Hora time = new Hora(0, 0);
+		return new FechaHora(date, time);
+	}
+
+	public static FechaHora parseFecha(String fecha, String hora) throws IllegalArgumentException {
+		Fecha date = Fecha.parseFecha(fecha);
+		Hora time = Hora.parseHora(hora);
+		return new FechaHora(date, time);
+	}
 	
 	public FechaHora(Fecha fecha, Hora hora) {
 		super();
