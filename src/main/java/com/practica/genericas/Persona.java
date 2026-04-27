@@ -18,7 +18,7 @@ public class Persona {
 		String email = datos[4];
 		String direccion = datos[5];
 		String cp = datos[6];
-		FechaHora fechaNacimiento = FechaHora.parseFecha(datos[7]);
+		FechaHora fechaNacimiento = FechaHora.Fecha.parseFecha(datos[7]);
 	}
 
 	public Persona() {
