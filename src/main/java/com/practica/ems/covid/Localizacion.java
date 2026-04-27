@@ -68,6 +68,10 @@ public class Localizacion {
 	    }
 	}
 
+	public LinkedList<PosicionPersona> getLista() {
+		return lista;
+	}
+
 	@Override
 	public String toString() {
 		String cadena = "";
