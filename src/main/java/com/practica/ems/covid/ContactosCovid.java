@@ -305,11 +305,14 @@ public class ContactosCovid {
 		return fechaHora;
 	}
 
-	private void parsearLinea(String linea) {
+	private void parsearLinea(String linea) throws EmsInvalidNumberOfDataException, EmsDuplicatePersonException {
 		String datos[] = this.dividirLineaData(linea);
 
 		if (datos[0].equals("PERSONA")) {
 			this.poblacion.addPersona(Persona.parsePersona(datos));
+		}
+		else if (datos[0].equals("LOCALIZACION")) {
+			PosicionPersona posicionPersona = PosicionPersona.parsePosicionPersona(datos);
 		}
 
 	}
