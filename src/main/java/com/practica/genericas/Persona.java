@@ -23,7 +23,11 @@ public class Persona {
 		return new Persona(nombre, apellidos, documento, email, direccion, cp, fechaNacimiento);
 	}
 
-	public Persona(String nombre, String apellidos, String documento, String email, String direccion,
+	public Persona() {
+
+	}
+
+	public Persona(String nombre, String apellidos, String documento, String email, String direccion, String cp,
 			FechaHora fechaNacimiento) {
 		super();
 		this.nombre = nombre;
@@ -31,6 +35,7 @@ public class Persona {
 		this.documento = documento;
 		this.email = email;
 		this.direccion = direccion;
+		this.cp = cp;
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
