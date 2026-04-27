@@ -6,8 +6,20 @@ import java.time.LocalDateTime;
 import java.util.Locale;
 
 public class FechaHora implements Comparable<FechaHora>{
-	public class Fecha {
+	public static class Fecha {
 		private int dia, mes, anio;
+
+		public static Fecha parseFecha(String fecha) throws IllegalArgumentException {
+			String[] campos = fecha.split("\\/");
+			if (campos.length != 3) {
+				throw new IllegalArgumentException("Formato de fecha incorrecto");
+			}
+			int dia = Integer.parseInt(campos[0]);
+			int mes = Integer.parseInt(campos[1]);	
+			int anio = Integer.parseInt(campos[2]);
+
+			return new Fecha(dia, mes, anio);
+		}
 		 
 		public Fecha(int dia, int mes, int anio) {
 			super();

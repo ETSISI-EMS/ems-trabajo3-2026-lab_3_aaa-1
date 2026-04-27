@@ -304,4 +304,13 @@ public class ContactosCovid {
 		FechaHora fechaHora = new FechaHora(dia, mes, anio, minuto, segundo);
 		return fechaHora;
 	}
+
+	private void parsearLinea(String linea) {
+		String datos[] = this.dividirLineaData(linea);
+
+		if (datos[0].equals("PERSONA")) {
+			this.poblacion.addPersona(Persona.parsePersona(datos));
+		}
+
+	}
 }
