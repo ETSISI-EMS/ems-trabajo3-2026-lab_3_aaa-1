@@ -98,17 +98,6 @@ public class Localizacion {
 		return cadena;		
 	}
 	
-	@SuppressWarnings("unused")
-	private FechaHora parsearFecha (String fecha) {
-		int dia, mes, anio;
-		String[] valores = fecha.split("\\/");
-		dia = Integer.parseInt(valores[0]);
-		mes = Integer.parseInt(valores[1]);
-		anio = Integer.parseInt(valores[2]);
-		FechaHora fechaHora = new FechaHora(dia, mes, anio, 0, 0);
-		return fechaHora;
-	}
-	
 	private  FechaHora parsearFecha (String fecha, String hora) {
 		int dia, mes, anio;
 		String[] valores = fecha.split("\\/");
