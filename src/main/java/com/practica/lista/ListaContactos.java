@@ -45,7 +45,7 @@ public class ListaContactos {
 
 			
 			NodoPosicion npActual = nuevo.getListaCoordenadas();
-			insertarNodoLista(npActual, aux, p);
+			insertarNodoLista(npActual, nuevo, p);
 			
 			if(ant!=null) {
 				nuevo.setSiguiente(aux);
