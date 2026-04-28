@@ -130,7 +130,7 @@ public class ListaContactos {
 	 * coordenadas, no tienen una utilidad en sí misma, más allá de comprobar que
 	 * nuestra lista funciona de manera correcta.
 	 */
-	public int numPersonasEntreDosInstantes(FechaHora inicio, FechaHora fin) {
+	private int comprobacionEnIntervaloPersonasONodos(FechaHora inicio, FechaHora fin, boolean numPersonas){
 		if(this.size==0)
 			return 0;
 		NodoTemporal aux = lista;
@@ -140,10 +140,13 @@ public class ListaContactos {
 		while(aux!=null) {
 			if(aux.getFecha().compareTo(inicio)>=0 && aux.getFecha().compareTo(fin)<=0) {
 				NodoPosicion nodo = aux.getListaCoordenadas();
-				while(nodo!=null) {
-					cont = cont + nodo.getNumPersonas();
+				while (nodo != null) {
+					if (numPersonas)
+						cont = cont + nodo.getNumPersonas();
+					else
+						cont = cont + 1;
 					nodo = nodo.getSiguiente();
-				}				
+				}
 				aux = aux.getSiguiente();
 			}else {
 				aux=aux.getSiguiente();
@@ -151,32 +154,13 @@ public class ListaContactos {
 		}
 		return cont;
 	}
-	
-	
+	public int numPersonasEntreDosInstantes(FechaHora inicio, FechaHora fin) {
+		return comprobacionEnIntervaloPersonasONodos(inicio,fin, true);
+	}
 	
 	public int numNodosCoordenadaEntreDosInstantes(FechaHora inicio, FechaHora fin) {
-		if(this.size==0)
-			return 0;
-		NodoTemporal aux = lista;
-		int cont = 0;
-		int a;
-		cont = 0;
-		while(aux!=null) {
-			if(aux.getFecha().compareTo(inicio)>=0 && aux.getFecha().compareTo(fin)<=0) {
-				NodoPosicion nodo = aux.getListaCoordenadas();
-				while(nodo!=null) {
-					cont = cont + 1;
-					nodo = nodo.getSiguiente();
-				}				
-				aux = aux.getSiguiente();
-			}else {
-				aux=aux.getSiguiente();
-			}
-		}
-		return cont;
+		return comprobacionEnIntervaloPersonasONodos(inicio,fin, false);
 	}
-	
-	
 	
 	@Override
 	public String toString() {
