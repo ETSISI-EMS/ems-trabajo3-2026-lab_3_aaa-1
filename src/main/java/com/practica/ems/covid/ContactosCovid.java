@@ -72,6 +72,11 @@ public class ContactosCovid {
 		}
 	}
 
+	public void resetData(){
+		this.poblacion = new Poblacion();
+		this.localizacion = new Localizacion();
+		this.listaContactos = new ListaContactos();
+	}
 	@SuppressWarnings("resource")
 	public void loadDataFile(String fichero, boolean reset) {
 		File archivo = null;
@@ -83,18 +88,14 @@ public class ContactosCovid {
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 			if (reset) {
-				this.poblacion = new Poblacion();
-				this.localizacion = new Localizacion();
-				this.listaContactos = new ListaContactos();
-			} 
-
+				this.resetData();
+			}
 			while ((data = br.readLine()) != null) {
 				datas = dividirEntrada(data.trim());
 				for (String linea : datas) {
 					parsearLinea(linea);
 				}
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
