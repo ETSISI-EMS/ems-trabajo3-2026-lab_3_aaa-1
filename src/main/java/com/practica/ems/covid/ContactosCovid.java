@@ -72,17 +72,12 @@ public class ContactosCovid {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public void loadDataFile(String fichero, boolean reset) {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
 		String datas[] = null, data = null;
-		loadDataFile(fichero, reset, archivo, fr, br, datas, data);
-		
-	}
-
-	@SuppressWarnings("resource")
-	public void loadDataFile(String fichero, boolean reset, File archivo, FileReader fr, BufferedReader br, String datas[], String data ) {
 		try {
 			archivo = new File(fichero);
 			fr = new FileReader(archivo);
