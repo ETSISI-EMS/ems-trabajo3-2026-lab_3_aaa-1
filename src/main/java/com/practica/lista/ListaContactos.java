@@ -135,21 +135,25 @@ public class ListaContactos {
 			return 0;
 		NodoTemporal aux = lista;
 		int cont = 0;
-		cont = 0;
 		while(aux!=null) {
 			if(aux.getFecha().compareTo(inicio)>=0 && aux.getFecha().compareTo(fin)<=0) {
 				NodoPosicion nodo = aux.getListaCoordenadas();
-				while (nodo != null) {
-					if (numPersonas)
-						cont = cont + nodo.getNumPersonas();
-					else
-						cont = cont + 1;
-					nodo = nodo.getSiguiente();
-				}
+				cont = recorrerListaCoordenadasYContar(numPersonas,nodo,cont);
 				aux = aux.getSiguiente();
 			}else {
 				aux=aux.getSiguiente();
 			}
+		}
+		return cont;
+	}
+	private int recorrerListaCoordenadasYContar(boolean numPersonas,NodoPosicion nodo,int previousCont){
+		int cont = previousCont;
+		while (nodo != null) {
+			if (numPersonas)
+				cont = cont + nodo.getNumPersonas();
+			else
+				cont = cont + 1;
+			nodo = nodo.getSiguiente();
 		}
 		return cont;
 	}
