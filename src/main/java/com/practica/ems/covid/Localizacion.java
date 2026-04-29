@@ -42,7 +42,6 @@ public class Localizacion {
 	}
 	public void delLocalizacion(String documento, String fecha, String hora) throws EmsLocalizationNotFoundException {
 	    int pos=-1;
-	    int i;
 	    
 	    try {
 			pos = findLocalizacion(documento, fecha, hora);
