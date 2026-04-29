@@ -164,7 +164,7 @@ public class ListaContactos {
 	@Override
 	public String toString() {
 		String cadena="";
-		int a,cont;
+		int cont;
 		cont=0;
 		NodoTemporal aux = lista;
 		for(cont=1; cont<size; cont++) {
@@ -176,7 +176,4 @@ public class ListaContactos {
 		cadena += ";" +  aux.getFecha().getHora().toString();
 		return cadena;
 	}
-	
-	
-	
 }
