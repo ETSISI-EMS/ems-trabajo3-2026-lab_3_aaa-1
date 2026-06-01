@@ -172,18 +172,6 @@ public class ContactosCovid {
 		return cadenas;
 	}
 
-	private Persona crearPersona(String[] data) {
-		Persona persona = new Persona();
-		persona.setDocumento(data[1]);
-		persona.setNombre(data[2]);
-		persona.setApellidos(data[3]);
-		persona.setEmail(data[4]);
-		persona.setDireccion(data[5]);
-		persona.setCp(data[6]);
-		persona.setFechaNacimiento(parsearFecha(data[7]));
-		return persona;
-	}
-
 	private PosicionPersona crearPosicionPersona(String[] data) {
 		PosicionPersona posicionPersona = new PosicionPersona();
 		String fecha = null, hora;
